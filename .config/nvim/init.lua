@@ -1,2 +1,6 @@
 require("options")
-require("config.lazy")
+require("plugins")
+require("lsp")
+require("keybinds")
+
+vim.cmd("colorscheme kanagawa")

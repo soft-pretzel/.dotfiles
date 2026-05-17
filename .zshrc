@@ -20,7 +20,7 @@ SAVEHIST=1000
 
 # PATH
 typeset -U path PATH
-path=(~/.local/bin $path)
+path=($HOME/.local/bin $HOME/.cargo/bin $path)
 export PATH
 
 # Keybindings
@@ -72,14 +72,15 @@ zle -N down-line-or-beginning-search
 
 # Aliases
 alias dotfiles='/usr/bin/git --git-dir="$HOME/.dotfiles/" --work-tree="$HOME"'
+alias hx='helix'
 
 # Yazi shell wrapper that changes cwd on exiting
 function y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
-	yazi "$@" --cwd-file="$tmp"
+	command yazi "$@" --cwd-file="$tmp"
 	IFS= read -r -d '' cwd < "$tmp"
-	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
-	rm -f -- "$tmp"
+	[ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
+	command rm -f -- "$tmp"
 }
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
