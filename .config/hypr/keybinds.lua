@@ -69,9 +69,15 @@ hl.bind(
 )
 hl.bind("XF86RFKill", hl.dsp.exec_cmd(qs .. "airplaneMode toggle"), { locked = true })
 
--- Passthru submap for working in VMs
+-- Passthrough submap for working in VMs
 -- https://wiki.hypr.land/FAQ/#my-vm-doesnt-receive-keybinds-i-have-set-in-hyprland
-hl.define_submap("passthru", function()
-	hl.bind("SUPER + Escape", hl.dsp.submap("reset"))
+hl.define_submap("passthrough", function()
+	hl.bind("SUPER + Escape", function()
+		hl.dispatch(hl.dsp.submap("reset"))
+		hl.dispatch(hl.dsp.exec_cmd(qs .. 'toast send \'{"title": "Passthrough disabled"}\''))
+	end)
 end)
-hl.bind("SUPER + Escape", hl.dsp.submap("passthru"))
+hl.bind("SUPER + Escape", function()
+	hl.dispatch(hl.dsp.submap("passthrough"))
+	hl.dispatch(hl.dsp.exec_cmd(qs .. 'toast send \'{"title": "Passthrough enabled"}\''))
+end)

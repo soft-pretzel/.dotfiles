@@ -177,16 +177,6 @@
             "right": [
                 {
                     "defaultSettings": {
-                        "color": "#0064ff",
-                        "colorIcon": false,
-                        "hideOnEmpty": false,
-                        "recentColors": [
-                        ]
-                    },
-                    "id": "plugin:ds4-colors"
-                },
-                {
-                    "defaultSettings": {
                         "activeColor": "primary",
                         "camFilterRegex": "",
                         "enableToast": true,
@@ -235,6 +225,15 @@
                     "iconColor": "none",
                     "id": "Network",
                     "textColor": "none"
+                },
+                {
+                    "deviceNativePath": "__default__",
+                    "displayMode": "graphic-clean",
+                    "hideIfIdle": false,
+                    "hideIfNotDetected": true,
+                    "id": "Battery",
+                    "showNoctaliaPerformance": false,
+                    "showPowerProfiles": false
                 },
                 {
                     "hideWhenZero": true,
